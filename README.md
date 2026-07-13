@@ -152,7 +152,7 @@ All simulations completed successfully.
 # 🔬 Vivado RTL Synthesis
 
 <p align="center">
-<img src="images/GM_synthesis.png" width="900">
+<img src="images/GM_synthesis.png" width="600">
 </p>
 
 ---
@@ -160,7 +160,7 @@ All simulations completed successfully.
 # ⚡ Vivado Device Implementation
 
 <p align="center">
-<img src="images/GM_implementation.png" width="900">
+<img src="images/GM_implementation.png" width="600">
 </p>
 
 ---
