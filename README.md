@@ -16,7 +16,9 @@
 
 ---
 
-**GreenMatrix** is an FPGA-based AI accelerator that demonstrates how matrix multiplication can be performed using a parameterized systolic array architecture. Built entirely in **SystemVerilog**, the project implements reusable hardware modules, simulation-driven verification, and full synthesis and implementation using **AMD Vivado**.
+**GreenMatrix** is an FPGA-based AI accelerator that demonstrates matrix multiplication using a parameterized systolic array architecture. Built entirely in **SystemVerilog**, the project implements reusable hardware modules, simulation-driven verification, and a full synthesis-to-implementation flow on a real Artix-7 device (xc7a100tcsg324-1) using **AMD Vivado**.
+
+The design targets a **2×2 array as a controlled first step**: prove the datapath, control FSM, and load/output timing are correct at small scale — with the array intentionally parameterized so the same RTL scales to 4×4 and 8×8 without a rewrite (see [Future Enhancements](#-future-enhancements)).
 
 </div>
 
@@ -24,16 +26,16 @@
 
 # 🚀 Project Highlights
 
-- ✅ Parameterized hardware design
+- ✅ Parameterized hardware design (array size is a compile-time parameter, not hardcoded)
 - ✅ Reusable Processing Elements (PE)
 - ✅ Multiply-Accumulate (MAC) architecture
 - ✅ 2×2 Systolic Array
 - ✅ Matrix Loader
 - ✅ Controller Finite State Machine (FSM)
-- ✅ UART module framework
+- ✅ UART TX/RX framework (scaffolded, not yet integrated into top-level control path)
 - ✅ Fully simulated with Icarus Verilog
-- ✅ Synthesized in AMD Vivado
-- ✅ Successfully Implemented on Artix-7 Architecture
+- ✅ Synthesized and implemented in AMD Vivado 2026.1
+- ✅ Timing closure achieved on Artix-7 hardware target
 
 ---
 
@@ -62,6 +64,8 @@
 
                 Matrix C Output
 ```
+
+Each **PE** contains a MAC unit and forwarding logic: it multiplies its local A/B inputs, accumulates into a running sum, and forwards operands to its neighbor on the next cycle — the standard systolic dataflow that lets the array reuse each loaded operand across multiple MACs instead of re-fetching from memory every cycle.
 
 ---
 
@@ -104,25 +108,27 @@ GreenMatrix
 | **package.sv** | Global parameters and reusable data types |
 | **mac_unit.sv** | Multiply-Accumulate arithmetic engine |
 | **pe.sv** | Processing Element containing MAC and forwarding logic |
-| **systolic_array.sv** | Parameterized 2×2 systolic array |
-| **controller.sv** | Finite State Machine controlling execution |
+| **systolic_array.sv** | Parameterized N×N systolic array (instantiated as 2×2) |
+| **controller.sv** | Finite State Machine controlling load/compute/drain execution phases |
 | **matrix_loader.sv** | Loads matrix values into the array |
 | **output_buffer.sv** | Collects completed matrix results |
 | **greenmatrix_top.sv** | Top-level FPGA integration |
+
+> `uart_rx.sv` / `uart_tx.sv` exist as standalone, individually-simulated modules for a future host-to-FPGA data path. They are **not yet wired into `greenmatrix_top.sv`** — matrix data is currently loaded via testbench/simulation stimulus, not a live UART link.
 
 ---
 
 # 🧪 Verification
 
-Each hardware component was verified independently before full integration.
+Each hardware component was verified independently in Icarus Verilog before full integration, then re-checked at the top level post-synthesis.
 
-### Completed Testbenches
-
-- ✔ MAC Unit
-- ✔ Processing Element
-- ✔ Controller FSM
-- ✔ Parameterized Systolic Array
-- ✔ Top-Level Integration
+| Testbench | What was checked |
+|---|---|
+| **MAC Unit** | Multiply-accumulate correctness across representative operand pairs, including accumulator reset behavior |
+| **Processing Element** | Local MAC result plus correct forwarding of A/B operands to neighboring PEs on each clock edge |
+| **Controller FSM** | Correct state transitions across load → compute → drain phases, and `busy`/`done` flag timing |
+| **Systolic Array (2×2)** | End-to-end dataflow through all 4 PEs against the expected matrix product |
+| **Top-Level Integration** | Full `greenmatrix_top` against the worked example below, post-synthesis netlist behavior matched RTL simulation |
 
 ---
 
@@ -145,7 +151,36 @@ C = |19 22|
     |43 50|
 ```
 
-All simulations completed successfully.
+All simulations completed successfully and matched expected results.
+
+---
+
+# 📈 Implementation Results
+
+Post-implementation timing summary, Vivado 2026.1, target device **xc7a100tcsg324-1**:
+
+| Metric | Setup | Hold | Pulse Width |
+|---|---|---|---|
+| Worst Slack | **+∞** (WNS) | **+∞** (WHS) | N/A |
+| Total Negative Slack | 0.000 ns | 0.000 ns | N/A |
+| Failing Endpoints | **0** | **0** | N/A |
+| Total Endpoints | 632 | 632 | N/A |
+
+**Timing closure achieved with zero failing endpoints across setup and hold.**
+
+| Resource | Used | Available | Utilization % |
+|---|---|---|---|
+| LUT | 444 | 63,400 | 0.70% |
+| FF | 168 | 126,800 | 0.13% |
+| Bonded IOB | 197 | 210 | **93.81%** |
+| DSP48 | 0 | — | — |
+| BUFGCTRL | 1 | 32 | 3.13% |
+
+**The design is pin-limited, not logic-limited.** LUT and FF utilization sit under 1%, but Bonded IOB usage is at 93.81% — nearly every available I/O pin on this package is committed. That's expected for a fully-parallel interface: each matrix element (A and B, 2×2 each, 8 bits wide) gets its own dedicated input port rather than sharing a bus, so the pin count scales directly with matrix size and word width instead of with logic complexity.
+
+This is the direct motivation for the AXI4/UART items in [Future Enhancements](#-future-enhancements): serializing matrix loads over a bus (rather than exposing every element as a parallel port) is what unlocks scaling to 4×4 and 8×8 without running out of package pins. At 63,400 LUTs and 126,800 FFs available versus 444/168 used, the fabric has more than enough headroom to absorb a much larger array — pin count is the actual constraint on this package.
+
+Also notable: 0 DSP48 slices used, meaning the MAC units are currently implemented in LUT fabric rather than mapped to the FPGA's hard multiply-accumulate blocks. Remapping to DSP48 macros is a straightforward follow-up that would free up more fabric for a larger array and likely improve max clock frequency.
 
 ---
 
@@ -187,11 +222,14 @@ All simulations completed successfully.
 | System Integration | ✅ Complete |
 | Vivado Synthesis | ✅ Complete |
 | Vivado Implementation | ✅ Complete |
+| Timing Closure | ✅ Complete (WNS +∞, 0 failing endpoints) |
 | GitHub Portfolio | ✅ Complete |
 
 ---
 
 # 🔮 Future Enhancements
+
+Because the array size, data width, and PE count are all parameterized rather than hardcoded, scaling up is a configuration change plus re-verification — not a redesign:
 
 - 4×4 Systolic Array
 - 8×8 AI Accelerator
@@ -202,6 +240,7 @@ All simulations completed successfully.
 - INT8 Quantization
 - CNN Acceleration
 - Tensor Processing Pipeline
+- Wire up UART TX/RX into `greenmatrix_top` for live host-to-FPGA matrix loading
 
 ---
 
