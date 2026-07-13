@@ -1,0 +1,402 @@
+$date
+	Sun Jul 12 19:04:16 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_array $end
+$var parameter 32 ! N $end
+$var reg 1 " clear_acc $end
+$var reg 1 # clk $end
+$var reg 1 $ enable $end
+$var reg 1 % rst $end
+$scope module dut $end
+$var wire 1 " clear_acc $end
+$var wire 1 # clk $end
+$var wire 1 $ enable $end
+$var wire 1 % rst $end
+$var parameter 32 & N $end
+$scope begin GEN_ROWS[0] $end
+$var parameter 2 ' row $end
+$scope begin GEN_COLS[0] $end
+$var wire 8 ( pe_b_in [7:0] $end
+$var wire 8 ) pe_a_in [7:0] $end
+$var parameter 2 * col $end
+$scope begin GEN_A_LEFT_EDGE $end
+$upscope $end
+$scope begin GEN_B_TOP_EDGE $end
+$upscope $end
+$scope module u_pe $end
+$var wire 8 + a_in [7:0] $end
+$var wire 32 , acc_out [31:0] $end
+$var wire 8 - b_in [7:0] $end
+$var wire 1 " clear_acc $end
+$var wire 1 # clk $end
+$var wire 1 $ enable $end
+$var wire 1 % rst $end
+$var wire 32 . acc_feedback [31:0] $end
+$var reg 8 / a_out [7:0] $end
+$var reg 8 0 b_out [7:0] $end
+$scope module u_mac $end
+$var wire 8 1 a [7:0] $end
+$var wire 8 2 b [7:0] $end
+$var wire 1 " clear_acc $end
+$var wire 1 # clk $end
+$var wire 1 $ enable $end
+$var wire 1 % rst $end
+$var wire 32 3 acc_in [31:0] $end
+$var reg 32 4 acc_out [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope begin GEN_COLS[1] $end
+$var wire 8 5 pe_b_in [7:0] $end
+$var wire 8 6 pe_a_in [7:0] $end
+$var parameter 2 7 col $end
+$scope begin GEN_A_INTERNAL $end
+$upscope $end
+$scope begin GEN_B_TOP_EDGE $end
+$upscope $end
+$scope module u_pe $end
+$var wire 8 8 a_in [7:0] $end
+$var wire 32 9 acc_out [31:0] $end
+$var wire 8 : b_in [7:0] $end
+$var wire 1 " clear_acc $end
+$var wire 1 # clk $end
+$var wire 1 $ enable $end
+$var wire 1 % rst $end
+$var wire 32 ; acc_feedback [31:0] $end
+$var reg 8 < a_out [7:0] $end
+$var reg 8 = b_out [7:0] $end
+$scope module u_mac $end
+$var wire 8 > a [7:0] $end
+$var wire 8 ? b [7:0] $end
+$var wire 1 " clear_acc $end
+$var wire 1 # clk $end
+$var wire 1 $ enable $end
+$var wire 1 % rst $end
+$var wire 32 @ acc_in [31:0] $end
+$var reg 32 A acc_out [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope begin GEN_ROWS[1] $end
+$var parameter 2 B row $end
+$scope begin GEN_COLS[0] $end
+$var wire 8 C pe_b_in [7:0] $end
+$var wire 8 D pe_a_in [7:0] $end
+$var parameter 2 E col $end
+$scope begin GEN_A_LEFT_EDGE $end
+$upscope $end
+$scope begin GEN_B_INTERNAL $end
+$upscope $end
+$scope module u_pe $end
+$var wire 8 F a_in [7:0] $end
+$var wire 32 G acc_out [31:0] $end
+$var wire 8 H b_in [7:0] $end
+$var wire 1 " clear_acc $end
+$var wire 1 # clk $end
+$var wire 1 $ enable $end
+$var wire 1 % rst $end
+$var wire 32 I acc_feedback [31:0] $end
+$var reg 8 J a_out [7:0] $end
+$var reg 8 K b_out [7:0] $end
+$scope module u_mac $end
+$var wire 8 L a [7:0] $end
+$var wire 8 M b [7:0] $end
+$var wire 1 " clear_acc $end
+$var wire 1 # clk $end
+$var wire 1 $ enable $end
+$var wire 1 % rst $end
+$var wire 32 N acc_in [31:0] $end
+$var reg 32 O acc_out [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope begin GEN_COLS[1] $end
+$var wire 8 P pe_b_in [7:0] $end
+$var wire 8 Q pe_a_in [7:0] $end
+$var parameter 2 R col $end
+$scope begin GEN_A_INTERNAL $end
+$upscope $end
+$scope begin GEN_B_INTERNAL $end
+$upscope $end
+$scope module u_pe $end
+$var wire 8 S a_in [7:0] $end
+$var wire 32 T acc_out [31:0] $end
+$var wire 8 U b_in [7:0] $end
+$var wire 1 " clear_acc $end
+$var wire 1 # clk $end
+$var wire 1 $ enable $end
+$var wire 1 % rst $end
+$var wire 32 V acc_feedback [31:0] $end
+$var reg 8 W a_out [7:0] $end
+$var reg 8 X b_out [7:0] $end
+$scope module u_mac $end
+$var wire 8 Y a [7:0] $end
+$var wire 8 Z b [7:0] $end
+$var wire 1 " clear_acc $end
+$var wire 1 # clk $end
+$var wire 1 $ enable $end
+$var wire 1 % rst $end
+$var wire 32 [ acc_in [31:0] $end
+$var reg 32 \ acc_out [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope task drive_inputs $end
+$var integer 32 ] a0 [31:0] $end
+$var integer 32 ^ a1 [31:0] $end
+$var integer 32 _ b0 [31:0] $end
+$var integer 32 ` b1 [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1 R
+b0 E
+b1 B
+b1 7
+b0 *
+b0 '
+b10 &
+b10 !
+$end
+#0
+$dumpvars
+bx `
+bx _
+bx ^
+bx ]
+b0 \
+b0 [
+b0 Z
+b0 Y
+b0 X
+b0 W
+b0 V
+b0 U
+b0 T
+b0 S
+b0 Q
+b0 P
+b0 O
+b0 N
+b0 M
+b0 L
+b0 K
+b0 J
+b0 I
+b0 H
+b0 G
+b0 F
+b0 D
+b0 C
+b0 A
+b0 @
+b0 ?
+b0 >
+b0 =
+b0 <
+b0 ;
+b0 :
+b0 9
+b0 8
+b0 6
+b0 5
+b0 4
+b0 3
+b0 2
+b0 1
+b0 0
+b0 /
+b0 .
+b0 -
+b0 ,
+b0 +
+b0 )
+b0 (
+1%
+0$
+0#
+0"
+$end
+#5000
+1#
+#10000
+0#
+#12000
+b0 `
+b101 _
+b0 ^
+b1 ]
+1$
+0%
+#15000
+1#
+#20000
+b110 `
+b111 _
+b11 ^
+b10 ]
+b101 (
+b101 -
+b101 2
+b1 )
+b1 +
+b1 1
+0#
+#25000
+b101 C
+b101 H
+b101 M
+b101 0
+b1 6
+b1 8
+b1 >
+b1 /
+b101 ,
+b101 .
+b101 3
+b101 4
+1#
+#30000
+b1000 `
+b0 _
+b100 ^
+b0 ]
+b110 5
+b110 :
+b110 ?
+b111 (
+b111 -
+b111 2
+b11 D
+b11 F
+b11 L
+b10 )
+b10 +
+b10 1
+0#
+#35000
+b10011 ,
+b10011 .
+b10011 3
+b10011 4
+b111 C
+b111 H
+b111 M
+b111 0
+b10 6
+b10 8
+b10 >
+b10 /
+b110 9
+b110 ;
+b110 @
+b110 A
+b110 P
+b110 U
+b110 Z
+b110 =
+b1 <
+b1111 G
+b1111 I
+b1111 N
+b1111 O
+b101 K
+b11 Q
+b11 S
+b11 Y
+b11 J
+1#
+#40000
+b0 `
+b0 ^
+b1000 5
+b1000 :
+b1000 ?
+b0 (
+b0 -
+b0 2
+b100 D
+b100 F
+b100 L
+b0 )
+b0 +
+b0 1
+0#
+#45000
+b110 X
+b11 W
+b10010 T
+b10010 V
+b10010 [
+b10010 \
+b111 K
+b100 Q
+b100 S
+b100 Y
+b100 J
+b101011 G
+b101011 I
+b101011 N
+b101011 O
+b1000 P
+b1000 U
+b1000 Z
+b1000 =
+b10 <
+b10110 9
+b10110 ;
+b10110 @
+b10110 A
+b0 C
+b0 H
+b0 M
+b0 0
+b0 6
+b0 8
+b0 >
+b0 /
+1#
+#50000
+b0 5
+b0 :
+b0 ?
+b0 D
+b0 F
+b0 L
+0#
+#55000
+b0 P
+b0 U
+b0 Z
+b0 =
+b0 <
+b0 K
+b0 Q
+b0 S
+b0 Y
+b0 J
+b110010 T
+b110010 V
+b110010 [
+b110010 \
+b1000 X
+b100 W
+1#
+#60000
+0#
+#65000
+b0 X
+b0 W
+1#
+#66000

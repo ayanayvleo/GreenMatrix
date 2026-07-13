@@ -1,0 +1,143 @@
+$date
+	Sun Jul 12 18:52:51 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_pe $end
+$var wire 8 ! b_out [7:0] $end
+$var wire 32 " acc_out [31:0] $end
+$var wire 8 # a_out [7:0] $end
+$var reg 8 $ a_in [7:0] $end
+$var reg 8 % b_in [7:0] $end
+$var reg 1 & clear_acc $end
+$var reg 1 ' clk $end
+$var reg 1 ( enable $end
+$var reg 1 ) rst $end
+$scope module dut $end
+$var wire 8 * a_in [7:0] $end
+$var wire 32 + acc_out [31:0] $end
+$var wire 8 , b_in [7:0] $end
+$var wire 1 & clear_acc $end
+$var wire 1 ' clk $end
+$var wire 1 ( enable $end
+$var wire 1 ) rst $end
+$var wire 32 - acc_feedback [31:0] $end
+$var reg 8 . a_out [7:0] $end
+$var reg 8 / b_out [7:0] $end
+$scope module u_mac $end
+$var wire 8 0 a [7:0] $end
+$var wire 8 1 b [7:0] $end
+$var wire 1 & clear_acc $end
+$var wire 1 ' clk $end
+$var wire 1 ( enable $end
+$var wire 1 ) rst $end
+$var wire 32 2 acc_in [31:0] $end
+$var reg 32 3 acc_out [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 3
+b0 2
+b0 1
+b0 0
+b0 /
+b0 .
+b0 -
+b0 ,
+b0 +
+b0 *
+1)
+0(
+0'
+0&
+b0 %
+b0 $
+b0 #
+b0 "
+b0 !
+$end
+#5000
+1'
+#10000
+0'
+#12000
+0)
+#15000
+1'
+#20000
+b11 %
+b11 ,
+b11 1
+b10 $
+b10 *
+b10 0
+1(
+0'
+#25000
+b11 !
+b11 /
+b10 #
+b10 .
+b110 "
+b110 +
+b110 -
+b110 2
+b110 3
+1'
+#30000
+b101 %
+b101 ,
+b101 1
+b100 $
+b100 *
+b100 0
+0'
+#35000
+b11010 "
+b11010 +
+b11010 -
+b11010 2
+b11010 3
+b101 !
+b101 /
+b100 #
+b100 .
+1'
+#40000
+b111 %
+b111 ,
+b111 1
+b111 $
+b111 *
+b111 0
+0(
+0'
+#45000
+1'
+#50000
+1&
+0'
+#55000
+b0 "
+b0 +
+b0 -
+b0 2
+b0 3
+1'
+#56000
+0&
+#60000
+0'
+#65000
+1'
+#66000

@@ -1,0 +1,115 @@
+$date
+	Sun Jul 12 18:59:14 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_controller $end
+$var wire 1 ! enable $end
+$var wire 1 " done $end
+$var wire 1 # clear_acc $end
+$var wire 1 $ busy $end
+$var reg 1 % clk $end
+$var reg 1 & rst $end
+$var reg 1 ' start $end
+$scope module dut $end
+$var wire 1 % clk $end
+$var wire 1 & rst $end
+$var wire 1 ' start $end
+$var parameter 32 ( COMPUTE_CYCLES $end
+$var parameter 32 ) COUNTER_WIDTH $end
+$var reg 1 $ busy $end
+$var reg 1 # clear_acc $end
+$var reg 2 * current_state [1:0] $end
+$var reg 2 + cycle_count [1:0] $end
+$var reg 1 " done $end
+$var reg 1 ! enable $end
+$var reg 2 , next_state [1:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10 )
+b100 (
+$end
+#0
+$dumpvars
+b0 ,
+b0 +
+b0 *
+0'
+1&
+0%
+0$
+0#
+0"
+0!
+$end
+#5000
+1%
+#10000
+0%
+#12000
+0&
+#15000
+1%
+#20000
+b1 ,
+1'
+0%
+#25000
+1$
+1#
+b10 ,
+b1 *
+1%
+#30000
+b10 ,
+0'
+0%
+#35000
+1!
+1$
+0#
+b10 *
+1%
+#40000
+0%
+#45000
+b1 +
+1%
+#50000
+0%
+#55000
+b10 +
+1%
+#60000
+0%
+#65000
+b11 ,
+b11 +
+1%
+#70000
+0%
+#75000
+1"
+0$
+0!
+b0 ,
+b0 +
+b11 *
+1%
+#80000
+0%
+#85000
+0"
+b0 *
+1%
+#90000
+0%
+#95000
+1%

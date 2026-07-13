@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Sun Jul 12 19:38:35 2026
+# Process ID         : 19648
+# Current directory  : C:/Users/ayana/GreenMatrix
+# Command line       : vivado.exe -mode batch -source fix_vivado_gui_bitstream.tcl
+# Log file           : C:/Users/ayana/GreenMatrix/vivado.log
+# Journal file       : C:/Users/ayana/GreenMatrix\vivado.jou
+# Running On         : Blessing
+# Platform           : Windows 11
+# Operating System   : 26200
+# Processor Detail   : Intel(R) Core(TM) i7-14700F
+# CPU Frequency      : 2112 MHz
+# CPU Physical cores : 20
+# CPU Logical cores  : 28
+# Host memory        : 34193 MB
+# Swap memory        : 2147 MB
+# Total Virtual      : 36341 MB
+# Available Virtual  : 9462 MB
+#-----------------------------------------------------------
+source fix_vivado_gui_bitstream.tcl

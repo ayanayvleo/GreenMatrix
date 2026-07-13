@@ -1,0 +1,253 @@
+#! /ucrt64/bin/vvp
+:ivl_version "13.0 (stable)" "(v13_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\msys64\ucrt64\lib\ivl\system.vpi";
+:vpi_module "C:\msys64\ucrt64\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\msys64\ucrt64\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\msys64\ucrt64\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\msys64\ucrt64\lib\ivl\va_math.vpi";
+:vpi_module "C:\msys64\ucrt64\lib\ivl\v2009.vpi";
+S_000001d5c6b8c6b0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_000001d5c6b8c840 .scope package, "greenmatrix_pkg" "greenmatrix_pkg" 3 1;
+ .timescale 0 0;
+P_000001d5c6b8c9d0 .param/l "ACC_WIDTH" 0 3 5, +C4<00000000000000000000000000100000>;
+P_000001d5c6b8ca08 .param/l "ARRAY_SIZE" 0 3 6, +C4<00000000000000000000000000000010>;
+P_000001d5c6b8ca40 .param/l "DATA_WIDTH" 0 3 4, +C4<00000000000000000000000000001000>;
+S_000001d5c6b816d0 .scope module, "matrix_loader" "matrix_loader" 4 5;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "rst";
+    .port_info 2 /INPUT 1 "clear_acc";
+    .port_info 3 /INPUT 1 "enable";
+    .port_info 4 /INPUT 32 "matrix_a";
+    .port_info 5 /INPUT 32 "matrix_b";
+    .port_info 6 /OUTPUT 16 "a_row_out";
+    .port_info 7 /OUTPUT 16 "b_col_out";
+P_000001d5c6b8ca80 .param/l "COUNTER_WIDTH" 1 4 21, +C4<00000000000000000000000000000010>;
+P_000001d5c6b8cab8 .param/l "N" 0 4 6, +C4<00000000000000000000000000000010>;
+P_000001d5c6b8caf0 .param/l "STREAM_CYCLES" 1 4 20, +C4<00000000000000000000000000000011>;
+v000001d5c6b81930_0 .var/i "a_index", 31 0;
+v000001d5c6bdec50 .array/s "a_row_out", 1 0, 7 0;
+v000001d5c6bdecf0 .array/s "b_col_out", 1 0, 7 0;
+v000001d5c6bded90_0 .var/i "b_index", 31 0;
+o000001d5c6b94018 .functor BUFZ 1, c4<z>; HiZ drive
+v000001d5c6bdee30_0 .net "clear_acc", 0 0, o000001d5c6b94018;  0 drivers
+o000001d5c6b94048 .functor BUFZ 1, c4<z>; HiZ drive
+v000001d5c6bdeed0_0 .net "clk", 0 0, o000001d5c6b94048;  0 drivers
+v000001d5c6b8a270_0 .var/i "col", 31 0;
+o000001d5c6b940a8 .functor BUFZ 1, c4<z>; HiZ drive
+v000001d5c6b8a310_0 .net "enable", 0 0, o000001d5c6b940a8;  0 drivers
+o000001d5c6b940d8 .functor BUFZ 8, c4<zzzzzzzz>; HiZ drive
+v000001d5c6b8a3b0 .array "matrix_a", 3 0;
+v000001d5c6b8a3b0_0 .net/s v000001d5c6b8a3b0 0, 7 0, o000001d5c6b940d8; 0 drivers
+o000001d5c6b94108 .functor BUFZ 8, c4<zzzzzzzz>; HiZ drive
+v000001d5c6b8a3b0_1 .net/s v000001d5c6b8a3b0 1, 7 0, o000001d5c6b94108; 0 drivers
+o000001d5c6b94138 .functor BUFZ 8, c4<zzzzzzzz>; HiZ drive
+v000001d5c6b8a3b0_2 .net/s v000001d5c6b8a3b0 2, 7 0, o000001d5c6b94138; 0 drivers
+o000001d5c6b94168 .functor BUFZ 8, c4<zzzzzzzz>; HiZ drive
+v000001d5c6b8a3b0_3 .net/s v000001d5c6b8a3b0 3, 7 0, o000001d5c6b94168; 0 drivers
+o000001d5c6b94198 .functor BUFZ 8, c4<zzzzzzzz>; HiZ drive
+v000001d5c6b8a450 .array "matrix_b", 3 0;
+v000001d5c6b8a450_0 .net/s v000001d5c6b8a450 0, 7 0, o000001d5c6b94198; 0 drivers
+o000001d5c6b941c8 .functor BUFZ 8, c4<zzzzzzzz>; HiZ drive
+v000001d5c6b8a450_1 .net/s v000001d5c6b8a450 1, 7 0, o000001d5c6b941c8; 0 drivers
+o000001d5c6b941f8 .functor BUFZ 8, c4<zzzzzzzz>; HiZ drive
+v000001d5c6b8a450_2 .net/s v000001d5c6b8a450 2, 7 0, o000001d5c6b941f8; 0 drivers
+o000001d5c6b94228 .functor BUFZ 8, c4<zzzzzzzz>; HiZ drive
+v000001d5c6b8a450_3 .net/s v000001d5c6b8a450 3, 7 0, o000001d5c6b94228; 0 drivers
+v000001d5c6bdf740_0 .var/i "row", 31 0;
+o000001d5c6b94288 .functor BUFZ 1, c4<z>; HiZ drive
+v000001d5c6bdf920_0 .net "rst", 0 0, o000001d5c6b94288;  0 drivers
+v000001d5c6bdf2e0_0 .var "stream_cycle", 1 0;
+E_000001d5c6b7ee70/0 .event anyedge, v000001d5c6b8a310_0, v000001d5c6bdf2e0_0, v000001d5c6b8a3b0_0, v000001d5c6b8a3b0_1;
+E_000001d5c6b7ee70/1 .event anyedge, v000001d5c6b8a3b0_2, v000001d5c6b8a3b0_3, v000001d5c6b8a450_0, v000001d5c6b8a450_1;
+E_000001d5c6b7ee70/2 .event anyedge, v000001d5c6b8a450_2, v000001d5c6b8a450_3;
+E_000001d5c6b7ee70 .event/or E_000001d5c6b7ee70/0, E_000001d5c6b7ee70/1, E_000001d5c6b7ee70/2;
+E_000001d5c6b7e830 .event posedge, v000001d5c6bdf920_0, v000001d5c6bdeed0_0;
+    .scope S_000001d5c6b816d0;
+T_0 ;
+    %wait E_000001d5c6b7e830;
+    %load/vec4 v000001d5c6bdf920_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %pushi/vec4 0, 0, 2;
+    %assign/vec4 v000001d5c6bdf2e0_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v000001d5c6bdee30_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.2, 8;
+    %pushi/vec4 0, 0, 2;
+    %assign/vec4 v000001d5c6bdf2e0_0, 0;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/vec4 v000001d5c6b8a310_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.4, 8;
+    %load/vec4 v000001d5c6bdf2e0_0;
+    %addi 1, 0, 2;
+    %assign/vec4 v000001d5c6bdf2e0_0, 0;
+T_0.4 ;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_000001d5c6b816d0;
+T_1 ;
+Ewait_0 .event/or E_000001d5c6b7ee70, E_0x0;
+    %wait Ewait_0;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d5c6bdf740_0, 0, 32;
+T_1.0 ; Top of for-loop
+    %load/vec4 v000001d5c6bdf740_0;
+    %cmpi/s 2, 0, 32;
+	  %jmp/0xz T_1.1, 5;
+    %pushi/vec4 0, 0, 8;
+    %ix/getv/s 4, v000001d5c6bdf740_0;
+    %store/vec4a v000001d5c6bdec50, 4, 0;
+T_1.2 ; for-loop step statement
+    %load/vec4 v000001d5c6bdf740_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001d5c6bdf740_0, 0, 32;
+    %jmp T_1.0;
+T_1.1 ; for-loop exit label
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d5c6b8a270_0, 0, 32;
+T_1.3 ; Top of for-loop
+    %load/vec4 v000001d5c6b8a270_0;
+    %cmpi/s 2, 0, 32;
+	  %jmp/0xz T_1.4, 5;
+    %pushi/vec4 0, 0, 8;
+    %ix/getv/s 4, v000001d5c6b8a270_0;
+    %store/vec4a v000001d5c6bdecf0, 4, 0;
+T_1.5 ; for-loop step statement
+    %load/vec4 v000001d5c6b8a270_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001d5c6b8a270_0, 0, 32;
+    %jmp T_1.3;
+T_1.4 ; for-loop exit label
+    %load/vec4 v000001d5c6b8a310_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_1.6, 8;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d5c6bdf740_0, 0, 32;
+T_1.8 ; Top of for-loop
+    %load/vec4 v000001d5c6bdf740_0;
+    %cmpi/s 2, 0, 32;
+	  %jmp/0xz T_1.9, 5;
+    %load/vec4 v000001d5c6bdf2e0_0;
+    %pad/u 32;
+    %load/vec4 v000001d5c6bdf740_0;
+    %sub;
+    %store/vec4 v000001d5c6b81930_0, 0, 32;
+    %load/vec4 v000001d5c6bdf740_0;
+    %load/vec4 v000001d5c6bdf2e0_0;
+    %pad/u 32;
+    %cmp/u;
+    %flag_or 5, 4;
+    %flag_get/vec4 5;
+    %jmp/0 T_1.14, 5;
+    %pushi/vec4 0, 0, 32;
+    %load/vec4 v000001d5c6b81930_0;
+    %cmp/s;
+    %flag_get/vec4 4;
+    %flag_get/vec4 5;
+    %or;
+    %and;
+T_1.14;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_1.13, 9;
+    %load/vec4 v000001d5c6b81930_0;
+    %cmpi/s 2, 0, 32;
+    %flag_get/vec4 5;
+    %and;
+T_1.13;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_1.11, 8;
+    %load/vec4 v000001d5c6bdf740_0;
+    %pad/s 34;
+    %pad/s 35;
+    %muli 2, 0, 35;
+    %pad/s 36;
+    %load/vec4 v000001d5c6b81930_0;
+    %pad/s 36;
+    %add;
+    %ix/vec4/s 4;
+    %load/vec4a v000001d5c6b8a3b0, 4;
+    %ix/getv/s 4, v000001d5c6bdf740_0;
+    %store/vec4a v000001d5c6bdec50, 4, 0;
+T_1.11 ;
+T_1.10 ; for-loop step statement
+    %load/vec4 v000001d5c6bdf740_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001d5c6bdf740_0, 0, 32;
+    %jmp T_1.8;
+T_1.9 ; for-loop exit label
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d5c6b8a270_0, 0, 32;
+T_1.15 ; Top of for-loop
+    %load/vec4 v000001d5c6b8a270_0;
+    %cmpi/s 2, 0, 32;
+	  %jmp/0xz T_1.16, 5;
+    %load/vec4 v000001d5c6bdf2e0_0;
+    %pad/u 32;
+    %load/vec4 v000001d5c6b8a270_0;
+    %sub;
+    %store/vec4 v000001d5c6bded90_0, 0, 32;
+    %load/vec4 v000001d5c6b8a270_0;
+    %load/vec4 v000001d5c6bdf2e0_0;
+    %pad/u 32;
+    %cmp/u;
+    %flag_or 5, 4;
+    %flag_get/vec4 5;
+    %jmp/0 T_1.21, 5;
+    %pushi/vec4 0, 0, 32;
+    %load/vec4 v000001d5c6bded90_0;
+    %cmp/s;
+    %flag_get/vec4 4;
+    %flag_get/vec4 5;
+    %or;
+    %and;
+T_1.21;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_1.20, 9;
+    %load/vec4 v000001d5c6bded90_0;
+    %cmpi/s 2, 0, 32;
+    %flag_get/vec4 5;
+    %and;
+T_1.20;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_1.18, 8;
+    %load/vec4 v000001d5c6bded90_0;
+    %pad/s 34;
+    %pad/s 35;
+    %muli 2, 0, 35;
+    %pad/s 36;
+    %load/vec4 v000001d5c6b8a270_0;
+    %pad/s 36;
+    %add;
+    %ix/vec4/s 4;
+    %load/vec4a v000001d5c6b8a450, 4;
+    %ix/getv/s 4, v000001d5c6b8a270_0;
+    %store/vec4a v000001d5c6bdecf0, 4, 0;
+T_1.18 ;
+T_1.17 ; for-loop step statement
+    %load/vec4 v000001d5c6b8a270_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001d5c6b8a270_0, 0, 32;
+    %jmp T_1.15;
+T_1.16 ; for-loop exit label
+T_1.6 ;
+    %jmp T_1;
+    .thread T_1, $push;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "rtl\package.sv";
+    "rtl\matrix_loader.sv";

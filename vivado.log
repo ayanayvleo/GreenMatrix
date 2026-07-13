@@ -1,0 +1,36 @@
+INFO: [Common 17-3922] A valid Vivado Design Suite BASIC license has been detected. Your current license is active and will expire on 10-jul-2027.
+#-----------------------------------------------------------
+# Vivado v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Sun Jul 12 19:38:35 2026
+# Process ID         : 19648
+# Current directory  : C:/Users/ayana/GreenMatrix
+# Command line       : vivado.exe -mode batch -source fix_vivado_gui_bitstream.tcl
+# Log file           : C:/Users/ayana/GreenMatrix/vivado.log
+# Journal file       : C:/Users/ayana/GreenMatrix\vivado.jou
+# Running On         : Blessing
+# Platform           : Windows 11
+# Operating System   : 26200
+# Processor Detail   : Intel(R) Core(TM) i7-14700F
+# CPU Frequency      : 2112 MHz
+# CPU Physical cores : 20
+# CPU Logical cores  : 28
+# Host memory        : 34193 MB
+# Swap memory        : 2147 MB
+# Total Virtual      : 36341 MB
+# Available Virtual  : 9462 MB
+#-----------------------------------------------------------
+source fix_vivado_gui_bitstream.tcl
+# open_project "C:/Users/ayana/GreenChip/build/runs/Leonard_Ayana_GreenMatrix/Leonard_Ayana_GreenMatrix.xpr"
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/ayana/GreenChip/build/runs/Leonard_Ayana_GreenMatrix/Leonard_Ayana_GreenMatrix.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-5713] Board part '' set for the project  is not found. BoardPart property will be unset. Please select board from latest repo build 
+# set hook_file "C:/Users/ayana/GreenMatrix/constraints/allow_unconstrained_bitstream.tcl"
+# set_property STEPS.WRITE_BITSTREAM.TCL.PRE $hook_file [get_runs impl_1]
+WARNING: [Runs 36-537] File C:/Users/ayana/GreenMatrix/constraints/allow_unconstrained_bitstream.tcl is not part of fileset utils_1, but has specified as a Tcl hook script for run(s) impl_1. This file will not be handled as part of the project for archive and other project based functionality.
+# save_project
+ERROR: [Common 17-163] Missing value for option 'name', please type 'save_project_as -help' for usage info.
+INFO: [Common 17-206] Exiting Vivado at Sun Jul 12 19:38:42 2026...
